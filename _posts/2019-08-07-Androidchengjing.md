@@ -9,7 +9,7 @@ tag: android
 
 沉浸式状态栏的实现方式有两种
 
-#### 第一种方法：代码中设置
+<h3> 第一种方法：代码中设置</h3>
 
    
 
@@ -47,7 +47,7 @@ tag: android
         parentView.setFitsSystemWindows(value);
 }
 ```
-#### 第二种方法：通过设置 Theme 主题设置状态栏透明
+<h3> 第二种方法：通过设置 Theme 主题设置状态栏透明</h3>
 
 API21 之后（也就是 android 5.0 之后）的状态栏，会默认覆盖一层半透明遮罩。且为了保持4.4以前系统正常使用，故需要三份 style 文件，即默认的values（不设置状态栏透明）、values-v19、values-v21（解决半透明遮罩问题）。
     
