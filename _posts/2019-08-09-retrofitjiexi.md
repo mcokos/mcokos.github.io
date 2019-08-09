@@ -6,8 +6,6 @@ description: "Retrofit 2.0源码探索"
 tag: android
 ---
 
-#### Retrofit 2.0源码探索
-
 
 
 <h3> Retrofit2.0的具体网络流程<h3
