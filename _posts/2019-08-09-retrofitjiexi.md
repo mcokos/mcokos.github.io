@@ -28,6 +28,8 @@ tag: android
 
 <h3> Retrofit实例创建</h3>	
 
+
+
 ```java
  Retrofit retrofit = new Retrofit.Builder()
                                  .baseUrl("http://xxxxxx/")
@@ -103,6 +105,8 @@ class Platform {
 
 <h3>构建Retrofit 时的代码</h3>
 
+
+
 ```Java
 public Retrofit build() {
   if (baseUrl == null) {
@@ -143,6 +147,8 @@ public Retrofit build() {
 ```
 
 <h3> 创建网络请求接口的实例</h3>
+
+
 
 ```java
 public <T> T create(final Class<T> service) {
