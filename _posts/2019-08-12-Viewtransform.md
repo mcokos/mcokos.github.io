@@ -526,14 +526,14 @@ public boolean onTouchEvent(MotionEvent event) {
 
 ![](../images/posts/3994917-cb9b5baf653583e6.png)
 
-#### **ViewGroup 事件分发示意图**
+#### ViewGroup 事件分发示意图
 
 ![](../images/posts/3994917-1204756eb60b72c4.png)
 
-#### **View 的事件分发示意图**
+#### View 的事件分发示意图
 
 ![](../images/posts/3994917-35ef3ae6c33729aa.png)
 
-#### **事件分发工作流程总结**
+#### 事件分发工作流程总结
 
 ![](../images/posts/3994917-fc6cdc4b9187d8fc.png)
