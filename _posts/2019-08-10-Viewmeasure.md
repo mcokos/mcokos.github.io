@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "View的绘制流程"
-date: 2019-08-09
+date: 2019-08-10
 description: "View的绘制流程探索"
 tag: android
 ---

@@ -1,3 +1,10 @@
+---
+layout: post
+title: "事件传递流程"
+date: 2019-08-12
+description: "事件传递流程"
+tag: android
+---
 #### 事件传递过程
 
 ​			实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity`的`dispatchTouchEvent`方法来分发事件，而`Actvity`会将事件传递给`Window`对象来分发，`Window`对象再传递给`DecorView`,`DecorView`则是我们在Actvity中通过`setContentView`后所设置的布局的父容器，通过`getWindow().getDecorView().findViewById(android.R.id.content).getChildAt(0`)这个方式就能获取到Activity所设置的布局。
@@ -515,18 +522,18 @@ public boolean onTouchEvent(MotionEvent event) {
 
 <h3>总结</h3>
 
-#### Activity 的事件分发示意图**
+#### Activity 的事件分发示意图
 
-![](..\images\posts\3994917-cb9b5baf653583e6.png)
+![](../images/posts/3994917-cb9b5baf653583e6.png)
 
 #### **ViewGroup 事件分发示意图**
 
-![](..\images\posts\3994917-1204756eb60b72c4.png)
+![](../images/posts/3994917-1204756eb60b72c4.png)
 
 #### **View 的事件分发示意图**
 
-![](..\images\posts\3994917-35ef3ae6c33729aa.png)
+![](../images/posts/3994917-35ef3ae6c33729aa.png)
 
 #### **事件分发工作流程总结**
 
-![](..\images\posts\3994917-fc6cdc4b9187d8fc.png)
+![](../images/posts/3994917-fc6cdc4b9187d8fc.png)
