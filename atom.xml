@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Mcokos Blog</title>
   
-  
+  <subtitle>面朝大海，春暖花开</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-27T03:07:38.503Z</updated>
+  <updated>2023-04-27T03:44:00.811Z</updated>
   <id>http://example.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Mcokos</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Androidchengjing</title>
+    <title>沉浸式状态栏的实现方式</title>
     <link href="http://example.com/2023/04/27/Androidchengjing/"/>
     <id>http://example.com/2023/04/27/Androidchengjing/</id>
     <published>2023-04-27T02:54:54.000Z</published>
-    <updated>2023-04-27T03:07:38.503Z</updated>
+    <updated>2023-04-27T03:44:00.811Z</updated>
     
     
     <summary type="html">沉浸式状态栏的实现方式有两种&lt;br /&gt;</summary>
