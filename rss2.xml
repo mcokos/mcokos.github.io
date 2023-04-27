@@ -9,27 +9,37 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 27 Apr 2023 02:27:03 GMT</pubDate>
+    <pubDate>Thu, 27 Apr 2023 03:00:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>hellworld</title>
-      <link>http://example.com/2023/04/27/hellworld/</link>
-      <guid>http://example.com/2023/04/27/hellworld/</guid>
-      <pubDate>Thu, 27 Apr 2023 02:27:03 GMT</pubDate>
+      <title>Androidchengjing</title>
+      <link>http://example.com/2023/04/27/Androidchengjing/</link>
+      <guid>http://example.com/2023/04/27/Androidchengjing/</guid>
+      <pubDate>Thu, 27 Apr 2023 02:54:54 GMT</pubDate>
       
         
         
-      <description>
-</description>
+      <description>&lt;p&gt;沉浸式状态栏的实现方式有两种&lt;/p&gt;
+&lt;h3&gt;
+第一种方法：代码中设置
+&lt;/h3&gt;
+&lt;pre class=&quot;java&quot;&gt;&lt;code&gt; if (Build.VERSION.SDK_INT &amp;gt;= Build.VERSION_CODES.KITKAT) &amp;#123;
+        int flagTranslucentStatus = WindowManager.LayoutPa</description>
         
       
       
       
       
+      <category domain="http://example.com/categories/Android/">Android</category>
       
       
-      <comments>http://example.com/2023/04/27/hellworld/#disqus_thread</comments>
+      <category domain="http://example.com/tags/android/">android</category>
+      
+      <category domain="http://example.com/tags/java/">java</category>
+      
+      
+      <comments>http://example.com/2023/04/27/Androidchengjing/#disqus_thread</comments>
       
     </item>
     
