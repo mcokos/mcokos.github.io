@@ -9,7 +9,7 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 27 Apr 2023 06:25:22 GMT</pubDate>
+    <pubDate>Thu, 27 Apr 2023 06:29:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -18,7 +18,7 @@
       <guid>http://example.com/2023/04/27/view-transform/</guid>
       <pubDate>Thu, 27 Apr 2023 04:17:43 GMT</pubDate>
       
-      <description>实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity`的`dispatchTouchEvent`方法来分发事件....
+      <description>实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity` 的`dispatchTouchEvent`方法来分发事件....
 </description>
       
       
