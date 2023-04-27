@@ -1,5 +1,5 @@
-http://example.com/2023/04/27/retrofit-detail/
 http://example.com/2023/04/27/view-transform/
+http://example.com/2023/04/27/retrofit-detail/
 http://example.com/2023/04/27/Androidchengjing/
 http://example.com/about/index.html
 http://example.com/categories/index.html

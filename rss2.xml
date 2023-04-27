@@ -9,21 +9,18 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 27 Apr 2023 04:27:30 GMT</pubDate>
+    <pubDate>Thu, 27 Apr 2023 05:06:28 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>view-transform</title>
+      <title>View事件传递过程</title>
       <link>http://example.com/2023/04/27/view-transform/</link>
       <guid>http://example.com/2023/04/27/view-transform/</guid>
       <pubDate>Thu, 27 Apr 2023 04:17:43 GMT</pubDate>
       
-        
-        
       <description>&lt;h3 id=&quot;事件传递过程&quot;&gt;事件传递过程&lt;/h3&gt;
 &lt;p&gt;​
-实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的&lt;code&gt;Actvity&lt;/code&gt;，由&lt;code&gt;Actvity&lt;/code&gt;的&lt;code&gt;dispatchTouchEvent&lt;/code&gt;方法来分发事件，而&lt;code&gt;Actvity&lt;/code&gt;会将事件传递给&lt;code&gt;Window&lt;/code&gt;对象来分发，&lt;c</description>
-        
+实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的&lt;code&gt;Actvity&lt;/code&gt;，由&lt;code&gt;Actvity&lt;/code&gt;的&lt;code&gt;dispatchTouchEvent&lt;/code&gt;方法来分发事件，而&lt;code&gt;Actvity&lt;/code&gt;会将事件传递给&lt;code&gt;Window&lt;/code&gt;对象来分发，&lt;code&gt;Window&lt;/code&gt;对象再传递给&lt;code&gt;DecorView&lt;/code&gt;,&lt;code&gt;DecorView&lt;/code&gt;则是我们在Actvity中通过&lt;code&gt;setContentView&lt;/code&gt;后所设置的布局的父容器，通过&lt;code&gt;getWindow().getDecorView().findViewById(android.R.id.content).getChildAt(0)&lt;/code&gt;这个方式就能获取到Activity所设置的布局。&lt;/p&gt;</description>
       
       
       
