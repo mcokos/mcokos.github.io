@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-27T05:08:33.765Z</updated>
+  <updated>2023-04-27T06:25:22.335Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,11 @@
     <link href="http://example.com/2023/04/27/view-transform/"/>
     <id>http://example.com/2023/04/27/view-transform/</id>
     <published>2023-04-27T04:17:43.000Z</published>
-    <updated>2023-04-27T05:08:33.765Z</updated>
+    <updated>2023-04-27T06:25:22.335Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;事件传递过程&quot;&gt;事件传递过程&lt;/h3&gt;
-&lt;p&gt;​
-实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的&lt;code&gt;Actvity&lt;/code&gt;，由&lt;code&gt;Actvity&lt;/code&gt;的&lt;code&gt;dispatchTouchEvent&lt;/code&gt;方法来分发事件，而&lt;code&gt;Actvity&lt;/code&gt;会将事件传递给&lt;code&gt;Window&lt;/code&gt;对象来分发，&lt;code&gt;Window&lt;/code&gt;对象再传递给&lt;code&gt;DecorView&lt;/code&gt;,&lt;code&gt;DecorView&lt;/code&gt;则是我们在Actvity中通过&lt;code&gt;setContentView&lt;/code&gt;后所设置的布局的父容器，通过&lt;code&gt;getWindow().getDecorView().findViewById(android.R.id.content).getChildAt(0)&lt;/code&gt;这个方式就能获取到Activity所设置的布局。&lt;/p&gt;</summary>
+    <summary type="html">实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity`的`dispatchTouchEvent`方法来分发事件....
+</summary>
     
     
     
