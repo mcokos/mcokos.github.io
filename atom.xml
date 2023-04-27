@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-27T05:06:28.843Z</updated>
+  <updated>2023-04-27T05:08:33.765Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/04/27/view-transform/"/>
     <id>http://example.com/2023/04/27/view-transform/</id>
     <published>2023-04-27T04:17:43.000Z</published>
-    <updated>2023-04-27T05:06:28.843Z</updated>
+    <updated>2023-04-27T05:08:33.765Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;事件传递过程&quot;&gt;事件传递过程&lt;/h3&gt;
@@ -35,7 +35,7 @@
     
     <category term="android" scheme="http://example.com/tags/android/"/>
     
-    <category term="view绘制" scheme="http://example.com/tags/view%E7%BB%98%E5%88%B6/"/>
+    <category term="事件传递" scheme="http://example.com/tags/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/"/>
     
   </entry>
   
