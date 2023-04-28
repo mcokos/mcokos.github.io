@@ -51,11 +51,11 @@
       <category domain="http://example.com/categories/Android/">Android</category>
       
       
-      <category domain="http://example.com/tags/android/">android</category>
-      
       <category domain="http://example.com/tags/retrofit/">retrofit</category>
       
       <category domain="http://example.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      <category domain="http://example.com/tags/android/">android</category>
       
       
       <comments>http://example.com/2023/04/27/retrofit-detail/#disqus_thread</comments>

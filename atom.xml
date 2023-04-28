@@ -54,11 +54,11 @@
     <category term="Android" scheme="http://example.com/categories/Android/"/>
     
     
-    <category term="android" scheme="http://example.com/tags/android/"/>
-    
     <category term="retrofit" scheme="http://example.com/tags/retrofit/"/>
     
     <category term="网络" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="android" scheme="http://example.com/tags/android/"/>
     
   </entry>
   
