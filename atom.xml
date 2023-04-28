@@ -43,27 +43,11 @@
     <link href="http://example.com/2023/04/27/retrofit-detail/"/>
     <id>http://example.com/2023/04/27/retrofit-detail/</id>
     <published>2023-04-27T04:11:26.000Z</published>
-    <updated>2023-04-27T05:06:24.254Z</updated>
+    <updated>2023-04-28T01:45:09.894Z</updated>
     
     
-    <summary type="html">&lt;h3&gt;
-Retrofit2.0的具体网络流程
-&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
-&lt;li&gt;&lt;p&gt;通过解析网络请求接口的注解 获得 网络请求参数&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过 动态代理 生成网络请求对象&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过 网络请求适配器 将 网络请求对象 进行平台适配&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;平台包括：Android、Rxjava、Guava和java8&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过 网络请求执行器 发送网络请求&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过 数据转换器 解析服务器返回的数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过 回调执行器 切换线程（子线程 -&amp;gt;&amp;gt;主线程）&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;用户在主线程处理返回结果&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;
-Retrofit实例创建
-&lt;/h3&gt;</summary>
+    <summary type="html">Retrofit通过解析网络请求接口的注解获得网络请求参数, 动态代理生成网络请求对象
+</summary>
     
     
     
