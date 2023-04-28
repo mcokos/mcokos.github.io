@@ -65,20 +65,6 @@
 
   
   <url>
-    <loc>http://example.com/tags/retrofit/</loc>
-    <lastmod>2023-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2023-04-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/android/</loc>
     <lastmod>2023-04-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -87,6 +73,20 @@
   
   <url>
     <loc>http://example.com/tags/java/</loc>
+    <lastmod>2023-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/retrofit/</loc>
+    <lastmod>2023-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2023-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
