@@ -9,7 +9,7 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 27 Apr 2023 06:29:31 GMT</pubDate>
+    <pubDate>Fri, 05 May 2023 07:36:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -51,11 +51,11 @@
       <category domain="http://example.com/categories/Android/">Android</category>
       
       
+      <category domain="http://example.com/tags/android/">android</category>
+      
       <category domain="http://example.com/tags/retrofit/">retrofit</category>
       
       <category domain="http://example.com/tags/%E7%BD%91%E7%BB%9C/">网络</category>
-      
-      <category domain="http://example.com/tags/android/">android</category>
       
       
       <comments>http://example.com/2023/04/27/retrofit-detail/#disqus_thread</comments>

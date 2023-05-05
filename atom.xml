@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-27T06:29:31.495Z</updated>
+  <updated>2023-05-05T07:36:41.885Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/04/27/view-transform/"/>
     <id>http://example.com/2023/04/27/view-transform/</id>
     <published>2023-04-27T04:17:43.000Z</published>
-    <updated>2023-04-27T06:29:31.495Z</updated>
+    <updated>2023-05-05T07:36:41.885Z</updated>
     
     
     <summary type="html">实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity` 的`dispatchTouchEvent`方法来分发事件....
@@ -54,11 +54,11 @@
     <category term="Android" scheme="http://example.com/categories/Android/"/>
     
     
+    <category term="android" scheme="http://example.com/tags/android/"/>
+    
     <category term="retrofit" scheme="http://example.com/tags/retrofit/"/>
     
     <category term="网络" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="android" scheme="http://example.com/tags/android/"/>
     
   </entry>
   
