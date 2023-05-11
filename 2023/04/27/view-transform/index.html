@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>View事件传递过程 | Mcokos Blog</title><meta name="author" content="Mcokos"><meta name="description" content=""><meta name="keywords" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel="icon" href="/images/favicon.jpg"><script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css"><link rel="stylesheet" href="/css/fonts.min.css"><script>const mixins={}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"><script src="/js/lib/highlight.js"></script><script src="/js/lib/preview.js"></script><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mcokos Blog" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="Mcokos Blog" type="application/rss+xml"></head><body><div id="layout"><transition name="fade"><div id="loading" v-show="loading"><div id="loading-circle"><h2>LOADING</h2><p>加载过慢请开启缓存 浏览器默认开启</p><img src="/images/loading.gif"></div></div></transition><nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}"><div class="desktop-menu"><a class="title" href="/"><span>MCOKOS BLOG</span> </a><a href="/"><i class="fa-solid fa-house fa-fw"></i> <span>&ensp;首页</span> </a><a href="/archives"><i class="fa-solid fa-box-archive fa-fw"></i> <span>&ensp;归档</span> </a><a href="/categories"><i class="fa-solid fa-bookmark fa-fw"></i> <span>&ensp;分类</span> </a><a href="/tags"><i class="fa-solid fa-tags fa-fw"></i> <span>&ensp;标签</span> </a><a href="/about"><i class="fa-solid fa-id-card fa-fw"></i> <span>&ensp;关于</span></a></div><div id="mobile-menu"><div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div><div class="title" @click="shouMenuItems = !shouMenuItems"><i class="fa-solid fa-bars fa-fw"></i> <span>&emsp;MCOKOS BLOG</span></div><transition name="slide"><div class="items" v-show="shouMenuItems"><a href="/"><div class="item"><div style="min-width:20px;max-width:50px;width:10%"><i class="fa-solid fa-house fa-fw"></i></div><div style="min-width:100px;max-width:150%;width:20%">首页</div></div></a><a href="/archives"><div class="item"><div style="min-width:20px;max-width:50px;width:10%"><i class="fa-solid fa-box-archive fa-fw"></i></div><div style="min-width:100px;max-width:150%;width:20%">归档</div></div></a><a href="/categories"><div class="item"><div style="min-width:20px;max-width:50px;width:10%"><i class="fa-solid fa-bookmark fa-fw"></i></div><div style="min-width:100px;max-width:150%;width:20%">分类</div></div></a><a href="/tags"><div class="item"><div style="min-width:20px;max-width:50px;width:10%"><i class="fa-solid fa-tags fa-fw"></i></div><div style="min-width:100px;max-width:150%;width:20%">标签</div></div></a><a href="/about"><div class="item"><div style="min-width:20px;max-width:50px;width:10%"><i class="fa-solid fa-id-card fa-fw"></i></div><div style="min-width:100px;max-width:150%;width:20%">关于</div></div></a></div></transition></div></nav><transition name="into"><div id="main" v-show="!loading"><div class="article"><div><h1>View事件传递过程</h1></div><div class="info"><span class="date"><span class="icon"><i class="fa-solid fa-calendar fa-fw"></i> </span>2023/4/27 </span><span class="category"><a href="/categories/Android/"><span class="icon"><i class="fa-solid fa-bookmark fa-fw"></i> </span>Android </a></span><span class="tags"><span class="icon"><i class="fa-solid fa-tags fa-fw"></i> </span><span class="tag"><a href="/tags/android/" style="color:#5c6b72">android</a> </span><span class="tag"><a href="/tags/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/" style="color:#5c6b72">事件传递</a></span></span></div><div class="content" v-pre><h3 id="事件传递过程">事件传递过程</h3><p>​ 实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的<code>Actvity</code>，由<code>Actvity</code>的<code>dispatchTouchEvent</code>方法来分发事件，而<code>Actvity</code>会将事件传递给<code>Window</code>对象来分发，<code>Window</code>对象再传递给<code>DecorView</code>,<code>DecorView</code>则是我们在Actvity中通过<code>setContentView</code>后所设置的布局的父容器，通过<code>getWindow().getDecorView().findViewById(android.R.id.content).getChildAt(0)</code>这个方式就能获取到Activity所设置的布局。</p><p>Activity 的 <code>dispatchTouchEvent</code>方法</p><pre class="java"><code>public boolean dispatchTouchEvent(MotionEvent ev) &#123;
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>View事件传递过程 | Mcokos Blog</title><meta name="author" content="Mcokos"><meta name="description" content=""><meta name="keywords" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel="icon" href="/images/favicon.jpg"><script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css"><link rel="stylesheet" href="/css/fonts.min.css"><script>const mixins={}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"><script src="/js/lib/highlight.js"></script><script src="/js/lib/preview.js"></script><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mcokos Blog" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="Mcokos Blog" type="application/rss+xml"></head><body><div id="layout"><transition name="slide"><div id="slide" v-show="showSlidBar"><div><div id="sild-mask" @click="taggleSildbar"></div><div id="sildbar-menu"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="items" v-show="true"><a href="/"><div class="item"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span></div></a><a href="/archives"><div class="item"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span></div></a><a href="/categories"><div class="item"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span></div></a><a href="/tags"><div class="item"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span></div></a><a href="/about"><div class="item"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></div></a></div></div></div></div></transition><header id="menu"><nav class="desktop-menu"><a class="title" href="/"><span>MCOKOS BLOG</span></a><div class="menu-items"><a href="/"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span> </a><a href="/archives"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span> </a><a href="/categories"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span> </a><a href="/tags"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span> </a><a href="/about"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></a></div><div class="menu-right"><div class="menu-button" id="search-button"><a><i class="fa-solid fa-magnifying-glass fa-fw fa-xl"></i></a></div><div class="menu-button" id="menu-totop"></div><div class="menu-button" id="mobile-menu" @click="taggleSildbar"><a><i class="fa-solid fa-bars fa-fw fa-xl"></i></a></div></div></nav></header><div id="page" ref="homePostsWrap"><div id="home-left"><div class="article"><div><h1>View事件传递过程</h1></div><div class="info"><span class="date"><span class="icon"><i class="fa-solid fa-calendar fa-fw"></i> </span>2023/4/27 </span><span class="category"><a href="/categories/Android/"><span class="icon"><i class="fa-solid fa-bookmark fa-fw"></i> </span>Android </a></span><span class="tags"><span class="icon"><i class="fa-solid fa-tags fa-fw"></i> </span><span class="tag"><a href="/tags/android/" style="color:#5c6b72">android</a> </span><span class="tag"><a href="/tags/%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/" style="color:#5c6b72">事件传递</a></span></span></div><div class="content" v-pre><h3 id="事件传递过程">事件传递过程</h3><p>​ 实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的<code>Actvity</code>，由<code>Actvity</code>的<code>dispatchTouchEvent</code>方法来分发事件，而<code>Actvity</code>会将事件传递给<code>Window</code>对象来分发，<code>Window</code>对象再传递给<code>DecorView</code>,<code>DecorView</code>则是我们在Actvity中通过<code>setContentView</code>后所设置的布局的父容器，通过<code>getWindow().getDecorView().findViewById(android.R.id.content).getChildAt(0)</code>这个方式就能获取到Activity所设置的布局。</p><p>Activity 的 <code>dispatchTouchEvent</code>方法</p><pre><code class="java">public boolean dispatchTouchEvent(MotionEvent ev) &#123;
     if (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;
         //空方法
         onUserInteraction();
@@ -8,14 +8,17 @@
         return true;
     &#125;
     return onTouchEvent(ev);
-&#125;</code></pre><p>Window的<code>superDispatchTouchEvent</code>将事件分配给跟布局<code>mDecor</code>的<code>superDispatchTouchEvent</code></p><pre class="java"><code>@Override
+&#125;
+</code></pre><p>Window的<code>superDispatchTouchEvent</code>将事件分配给跟布局<code>mDecor</code>的<code>superDispatchTouchEvent</code></p><pre><code class="java">@Override
 public boolean superDispatchTouchEvent(MotionEvent event) &#123;
     //将事件传递给根View DecorView处理
     return mDecor.superDispatchTouchEvent(event);
-&#125;</code></pre><p>最终将事件传递给 <code>FrameLayout</code> 的<code>dispatchTouchEvent</code></p><pre class="java"><code>public boolean superDispatchTouchEvent(MotionEvent event) &#123;
-    //调用DecorView的父类 也就是FrameLayout的dispatchTouchEvent
+&#125;
+</code></pre><p>最终将事件传递给 <code>FrameLayout</code> 的<code>dispatchTouchEvent</code></p><pre><code class="java">public boolean superDispatchTouchEvent(MotionEvent event) &#123;
+	//调用DecorView的父类 也就是FrameLayout的dispatchTouchEvent
     return super.dispatchTouchEvent(event);
-&#125;</code></pre><p>调用FrameLayout 的父类ViewGroup 的dispatchTouchEvent</p><h3>ViewGroup的事件分发</h3><pre class="java"><code>@Override
+&#125;
+</code></pre><p>调用FrameLayout 的父类ViewGroup 的dispatchTouchEvent</p><h3>ViewGroup的事件分发</h3><pre><code class="java">@Override
 public boolean dispatchTouchEvent(MotionEvent ev) &#123;
    .......
        
@@ -23,7 +26,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
         if (actionMasked == MotionEvent.ACTION_DOWN
                 || mFirstTouchTarget != null) &#123;
             //是否允许事件被拦截
-            final boolean disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != 0;         
+            final boolean disallowIntercept = (mGroupFlags &amp; FLAG_DISALLOW_INTERCEPT) != 0;			
             //如果不容许拦截
             if (!disallowIntercept) &#123;
                 //事件是否被拦截
@@ -52,7 +55,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
         final boolean split = (mGroupFlags &amp; FLAG_SPLIT_MOTION_EVENTS) != 0;
         TouchTarget newTouchTarget = null;
         boolean alreadyDispatchedToNewTouchTarget = false;
-        //事件未被拦截时
+    	//事件未被拦截时
         if (!canceled &amp;&amp; !intercepted) &#123;
 
             // If the event is targeting accessibility focus we give it to the
@@ -73,7 +76,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
                 // Clean up earlier touch targets for this pointer id in case they
                 // have become out of sync.
                 removePointersFromTouchTargets(idBitsToAssign);
-                //里面做了一个 For 循环，通过倒序遍历 ViewGroup 下面的所有子 View，然后一个一个判断
+				//里面做了一个 For 循环，通过倒序遍历 ViewGroup 下面的所有子 View，然后一个一个判断
                 //点击位置是否是该子 View 的布局区域，当然还有一些其他的，
                 //由于篇幅原因，这里就不细讲  了。
                 final int childrenCount = mChildrenCount;
@@ -140,7 +143,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
                             break;
                         &#125;
 
-                        // The accessibility focus didn&#39;t handle the event, so clear
+                        // The accessibility focus didn't handle the event, so clear
                         // the flag and do a normal dispatch to all children.
                         ev.setTargetAccessibilityFocus(false);
                     &#125;
@@ -158,7 +161,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
                 &#125;
             &#125;
         &#125;
-        //事件被拦截时  mFirstTouchTarget为空 
+		//事件被拦截时  mFirstTouchTarget为空 
         // Dispatch to touch targets.
         if (mFirstTouchTarget == null) &#123;
             // No touch targets so treat this as an ordinary view.
@@ -212,11 +215,13 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
         mInputEventConsistencyVerifier.onUnhandledEvent(ev, 1);
     &#125;
     return handled;
-&#125;</code></pre><p>当ViewGroup 拦截了事件 <code>onInterceptTouchEvent</code>返回为<code>true</code> <code>mFirstTouchTarget</code>为空</p><p>会进入下面的判断</p><pre class="java"><code>if (mFirstTouchTarget == null) &#123;
+&#125;
+</code></pre><p>当ViewGroup 拦截了事件 <code>onInterceptTouchEvent</code>返回为<code>true</code> <code>mFirstTouchTarget</code>为空</p><p>会进入下面的判断</p><pre><code class="java">if (mFirstTouchTarget == null) &#123;
     // No touch targets so treat this as an ordinary view.
     handled = dispatchTransformedTouchEvent(ev, canceled, null,
             TouchTarget.ALL_POINTER_IDS);
-&#125;</code></pre><pre class="java"><code>private boolean dispatchTransformedTouchEvent(MotionEvent event, boolean cancel,
+&#125;
+</code></pre><pre><code class="java">private boolean dispatchTransformedTouchEvent(MotionEvent event, boolean cancel,
         View child, int desiredPointerIdBits) &#123;
 .......
 
@@ -237,10 +242,11 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
     // Done.
     transformedEvent.recycle();
     return handled;
-&#125;</code></pre><p>由于传入的child 为null , 最终会调用ViewGroup的父类View 的 <code>dispatchTouchEvent</code></p><p>当ViewGroup 未拦截时 及 <code>onInterceptTouchEvent</code>返回值未<code>false</code> ，事件会传递给ViewGroup对应的子View 进行处理</p><p>最终事件都会经过View 的<code>dispatchTouchEvent</code>进行处理</p><h3>View的事件分发</h3><pre class="java"><code>public boolean dispatchTouchEvent(MotionEvent event) &#123;
+&#125;
+</code></pre><p>由于传入的child 为null , 最终会调用ViewGroup的父类View 的 <code>dispatchTouchEvent</code></p><p>当ViewGroup 未拦截时 及 <code>onInterceptTouchEvent</code>返回值未<code>false</code> ，事件会传递给ViewGroup对应的子View 进行处理</p><p>最终事件都会经过View 的<code>dispatchTouchEvent</code>进行处理</p><h3>View的事件分发</h3><pre><code class="java">public boolean dispatchTouchEvent(MotionEvent event) &#123;
     // If the event should be handled by accessibility focus first.
     if (event.isTargetAccessibilityFocus()) &#123;
-        // We don&#39;t have focus or no virtual descendant has it, do not handle the event.
+        // We don't have focus or no virtual descendant has it, do not handle the event.
         if (!isAccessibilityFocusedViewOrHost()) &#123;
             return false;
         &#125;
@@ -282,7 +288,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
     &#125;
 
     // Clean up after nested scrolls if this is the end of a gesture;
-    // also cancel it if we tried an ACTION_DOWN but we didn&#39;t want the rest
+    // also cancel it if we tried an ACTION_DOWN but we didn't want the rest
     // of the gesture.
     if (actionMasked == MotionEvent.ACTION_UP ||
             actionMasked == MotionEvent.ACTION_CANCEL ||
@@ -291,7 +297,8 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
     &#125;
 
     return result;
-&#125;</code></pre><p>由以上代码可以看出 <em>onTouch() 方法优先级高于 onTouchEvent(event) 方法</em></p><pre class="java"><code>public boolean onTouchEvent(MotionEvent event) &#123;
+&#125;
+</code></pre><p>由以上代码可以看出 <em>onTouch() 方法优先级高于 onTouchEvent(event) 方法</em></p><pre><code class="java">public boolean onTouchEvent(MotionEvent event) &#123;
     final float x = event.getX();
     final float y = event.getY();
     final int viewFlags = mViewFlags;
@@ -307,7 +314,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
         &#125;
         mPrivateFlags3 &amp;= ~PFLAG3_FINGER_DOWN;
         // A disabled view that is clickable still consumes the touch
-        // events, it just doesn&#39;t respond to them.
+        // events, it just doesn't respond to them.
         return clickable;
     &#125;
     if (mTouchDelegate != null) &#123;
@@ -333,7 +340,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
                 &#125;
                 boolean prepressed = (mPrivateFlags &amp; PFLAG_PREPRESSED) != 0;
                 if ((mPrivateFlags &amp; PFLAG_PRESSED) != 0 || prepressed) &#123;
-                    // take focus if we don&#39;t have it already and we should in
+                    // take focus if we don't have it already and we should in
                     // touch mode.
                     boolean focusTaken = false;
                     if (isFocusable() &amp;&amp; isFocusableInTouchMode() &amp;&amp; !isFocused()) &#123;
@@ -398,7 +405,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
                     break;
                 &#125;
 
-                // Walk up the hierarchy to determine if we&#39;re inside a scrolling container.
+                // Walk up the hierarchy to determine if we're inside a scrolling container.
                 boolean isInScrollingContainer = isInScrollingContainer();
 
                 // For views inside a scrolling container, delay the pressed feedback for
@@ -453,4 +460,5 @@ public boolean dispatchTouchEvent(MotionEvent ev) &#123;
     &#125;
 
     return false;
-&#125;</code></pre><h3>总结</h3><h4 id="activity-的事件分发示意图">Activity 的事件分发示意图</h4><p><img src="./3994917-cb9b5baf653583e6.png"></p><h4 id="viewgroup-事件分发示意图">ViewGroup 事件分发示意图</h4><p><img src="./3994917-1204756eb60b72c4.png"></p><h4 id="view-的事件分发示意图">View 的事件分发示意图</h4><p><img src="./3994917-35ef3ae6c33729aa.png"></p><h4 id="事件分发工作流程总结">事件分发工作流程总结</h4><p><img src="./3994917-fc6cdc4b9187d8fc.png"></p></div></div><footer id="footer"><div id="footer-wrap"><div>&copy; 2022 - 2023 Mcokos Blog <span id="footer-icon"><i class="fa-solid fa-font-awesome fa-fw"></i> </span>&commat;Mcokos</div><div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div></div></footer></div></transition><transition name="fade"><div id="preview" ref="preview" v-show="previewShow"><img id="preview-content" ref="previewContent"></div></transition></div><script src="/js/main.js"></script></body></html>
+&#125;
+</code></pre><h3>总结</h3><h4 id="Activity-的事件分发示意图">Activity 的事件分发示意图</h4><p><img src="./3994917-cb9b5baf653583e6.png" alt=""></p><h4 id="ViewGroup-事件分发示意图">ViewGroup 事件分发示意图</h4><p><img src="./3994917-1204756eb60b72c4.png" alt=""></p><h4 id="View-的事件分发示意图">View 的事件分发示意图</h4><p><img src="./3994917-35ef3ae6c33729aa.png" alt=""></p><h4 id="事件分发工作流程总结">事件分发工作流程总结</h4><p><img src="./3994917-fc6cdc4b9187d8fc.png" alt=""></p></div></div></div><div id="home-card"><div id="card-div"><div class="card-style"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="name">Mcokos</div><div class="description"><p>平凡生活，美好生活</p></div><div class="card-count"><div><span class="count-title">文章</span> 3</div><div><span class="count-title">标签</span> 5</div><div><span class="count-title">分类</span> 1</div></div><div class="icon-links"><span class="icon-link"><a target="_blank" rel="noopener" href="https://github.com/mcokos"><i class="fa-brands fa-github fa-fw"></i> </a></span><span class="icon-link"><a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=443915519&site=qq&menu=yes"><i class="fa-brands fa-qq fa-fw"></i> </a></span><span class="icon-link"><a href="mailto:xiaojiao_12@outlook.com"><i class="fa-solid fa-envelope fa-fw"></i></a></span></div><div class="friend-links"><div class="friend-link"><a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a></div></div></div></div></div></div><footer id="footer"><div id="footer-wrap"><div>&copy; 2022 - 2023 Mcokos Blog <span id="footer-icon"><i class="fa-solid fa-font-awesome fa-fw"></i> </span>&commat;Mcokos</div><div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div></div></footer><transition name="fade"><div id="preview" ref="preview" v-show="previewShow"><img id="preview-content" ref="previewContent"></div></transition></div><script src="/js/main.js"></script></body></html>
