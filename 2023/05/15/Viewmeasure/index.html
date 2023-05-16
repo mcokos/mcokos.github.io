@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>view的绘制流程 | Mcokos Blog</title><meta name="author" content="Mcokos"><meta name="description" content=""><meta name="keywords" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel="icon" href="/images/favicon.jpg"><script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css"><link rel="stylesheet" href="/css/fonts.min.css"><script>const mixins={}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/languages/xml.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"><script src="/js/lib/highlight.js"></script><script src="/js/lib/preview.js"></script><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mcokos Blog" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="Mcokos Blog" type="application/rss+xml"></head><body><div id="layout"><transition name="slide"><div id="slide" v-show="showSlidBar"><div><div id="sild-mask" @click="taggleSildbar"></div><div id="sildbar-menu"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="items" v-show="true"><a href="/"><div class="item"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span></div></a><a href="/archives"><div class="item"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span></div></a><a href="/categories"><div class="item"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span></div></a><a href="/tags"><div class="item"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span></div></a><a href="/about"><div class="item"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></div></a></div></div></div></div></transition><div id="float-button"><a @click.prevent="toTop"><i class="fa-sharp fa-solid fa-arrow-up fa-xl"></i></a></div><header id="menu"><nav class="desktop-menu"><a class="title" href="/"><span>MCOKOS BLOG</span></a><div class="menu-items"><a href="/" id="menu-home"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span> </a><a href="/archives" id="menu-archives"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span> </a><a href="/categories" id="menu-categories"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span> </a><a href="/tags" id="menu-tags"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span> </a><a href="/about" id="menu-about"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></a></div><div class="menu-right"><div class="menu-button" id="search-button"><a><i class="fa-solid fa-magnifying-glass fa-fw fa-xl"></i></a></div><div class="menu-button" id="menu-totop"></div><div class="menu-button" id="mobile-menu" @click="taggleSildbar"><a><i class="fa-solid fa-bars fa-fw fa-xl"></i></a></div></div></nav></header><div id="page" ref="homePostsWrap"><div id="home-left"><div class="article"><div><h1>view的绘制流程</h1></div><div class="info"><span class="date"><span class="icon"><i class="fa-solid fa-calendar fa-fw"></i> </span>2023/5/15 </span><span class="category"><a href="/categories/Android/"><span class="icon"><i class="fa-solid fa-bookmark fa-fw"></i> </span>Android </a></span><span class="tags"><span class="icon"><i class="fa-solid fa-tags fa-fw"></i> </span><span class="tag"><a href="/tags/view%E7%BB%98%E5%88%B6/" style="color:#5c6b72">view绘制</a></span></span></div><div class="content" v-pre><h3 id="view的绘制流程">view的绘制流程</h3><p>​ Android 中 Activity 是作为应用程序的载体存在，代表着一个完整的用户界面，提供了一个窗口来绘制各种视图，当 Activity 启动时，我们会通过 setContentView 方法来设置一个内容视图，这个内容视图就是用户看到的界面。</p><p><code>PhoneWindow</code> 是 Android 系统中最基本的窗口系统，每个 Activity 会创建一个。<code>PhoneWindow</code> 是 Activity 和 View 系统交互的接口。View 本质上是一个 <code>FrameLayout</code>，是 Activity 中所有 View 的祖先。</p><p>​ 当一个应用启动时，会启动一个主 Activity，Android 系统会根据 Activity 的布局来对它进行绘制。绘制会从根视图 ViewRoot 的 <code>performTraversals</code>() 方法开始，从上到下遍历整个视图树，每个 View 控制负责绘制自己，而 ViewGroup 还需要负责通知自己的子 View 进行绘制操作。视图操作的过程可以分为三个步骤，分别是测量(Measure)、布局(Layout)和绘制(Draw)。<code>performTraversals</code> 方法在类 <code>ViewRootImpl</code> 内，其核心代码如下。</p><pre><code class="java"> int childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);
+  int childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);
+  ...
+  // 测量
+  performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
+  ...
+  // 布局
+  performLayout(lp, mWidth, mHeight);
+  ...
+  // 绘制
+  performDraw();
+</code></pre><h4 id="MeasureSpec">MeasureSpec</h4><p><code>MeasureSpec</code> 表示的是一个 32 位的整数值，它的高 2 位表示测量模式 SpecMode，低 30 位表示某种测量模式下的规格大小 SpecSize。<code>MeasureSpec</code> 是 View 类的一个静态内部类，用来说明应该如何测量这个View。三种测量模式。</p><ul><li><code>UNSPECIFIED</code>：不指定测量模式，父视图没有限制子视图的大小，子视图可以是想要的任何尺寸，通常用于系统内部，应用开发中很少使用到。</li><li><code>EXACTLY</code>：精确测量模式，当该视图的 <code>layout_width</code> 或者 <code>layout_height</code> 指定为具体数值或者 <code>match_parent</code> 时生效，表示父视图已经决定了子视图的精确大小，这种模式下 View 的测量值就是 SpecSize 的值。</li><li><code>AT_MOST</code>：最大值模式，当前视图的 layout_width 或者 <code>layout_height</code> 指定为 <code>wrap_content</code> 时生效，此时子视图的尺寸可以是不超过父视图运行的最大尺寸的任何尺寸。</li></ul><p>对 <code>DecorView</code> 而言，它的 <code>MeasureSpec</code> 由窗口尺寸和其自身的 <code>LayoutParams</code> 共同决定；对于普通的 View，它的 <code>MeasureSpec</code> 由父视图的 <code>MeasureSpec</code> 和其本身的 <code>LayoutParams</code> 共同决定。</p><h3>view 的Measure过程</h3><p>Measure 用来计算 View 的实际大小。页面的测量流程从 <code>performMeasure</code> 方法开始。</p><pre><code class="java"> private void performMeasure(int childWidthMeasureSpec, int childHeightMeasureSpec) &#123;
+    if (mView == null) &#123;
+        return;
+    &#125;
+    Trace.traceBegin(Trace.TRACE_TAG_VIEW, &quot;measure&quot;);
+    try &#123;
+        mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+    &#125; finally &#123;
+        Trace.traceEnd(Trace.TRACE_TAG_VIEW);
+    &#125;
+  &#125;
+</code></pre><p>具体操作是分发给 <code>ViewGroup</code> 的，由 <code>ViewGroup</code> 在它的 <code>measureChild</code> 方法中传递给子 View。<code>ViewGroup</code> 通过遍历自身所有的子 View，并逐个调用子 View 的 <code>measure</code> 方法实现测量操作。</p><pre><code class="java"> // 遍历测量 ViewGroup 中所有的 View
+  protected void measureChildren(int widthMeasureSpec, int heightMeasureSpec) &#123;
+    final int size = mChildrenCount;
+    final View[] children = mChildren;
+    for (int i = 0; i &lt; size; ++i) &#123;
+        final View child = children[i];
+        if ((child.mViewFlags &amp; VISIBILITY_MASK) != GONE) &#123;
+            measureChild(child, widthMeasureSpec, heightMeasureSpec);
+        &#125;
+    &#125;
+  &#125;
+
+  // 测量某个指定的 View
+  protected void measureChild(View child, int parentWidthMeasureSpec,
+            int parentHeightMeasureSpec) &#123;
+    final LayoutParams lp = child.getLayoutParams();
+
+    final int childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,
+                mPaddingLeft + mPaddingRight, lp.width);
+    final int childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,
+                mPaddingTop + mPaddingBottom, lp.height);
+
+    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+  &#125;
+</code></pre><p>View (ViewGroup) 的 Measure 方法，最终的测量是通过回调 <code>onMeasure</code> 方法实现的，这个通常由 View 的特定子类自己实现，可以通过重写这个方法实现自定义 View。</p><pre><code class="java">public final void measure(int widthMeasureSpec, int heightMeasureSpec) &#123;
+    ...
+    onMeasure(widthMeasureSpec, heightMeasureSpec);
+    ....
+  &#125;
+  
+  // 如果需要自定义测量，子类需重写这个方法
+  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;
+    setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),
+    getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
+  &#125;
+  
+  // 如果 View 没有重写onMeasure 方法，默认会直接调用 getDefaultSize
+   public static int getDefaultSize(int size, int measureSpec) &#123;
+     int result = size;
+     int specMode = MeasureSpec.getMode(measureSpec);
+     int specSize = MeasureSpec.getSize(measureSpec);
+
+     switch (specMode) &#123;
+       case MeasureSpec.UNSPECIFIED:
+          result = size;
+          break;
+       case MeasureSpec.AT_MOST:
+       case MeasureSpec.EXACTLY:
+          result = specSize;
+          break;
+      &#125;
+      return result;
+   &#125;
+</code></pre><h3 id="view的Layout过程">view的Layout过程</h3><p>Layout 过程用来确定 View 在父容器的布局位置，他是父容器获取子 View 的位置参数后，调用子 View 的 layout 方法并将位置参数传入实现的。<code>ViewRootImpl</code> 的 <code>performLayout</code> 代码如下。</p><pre><code class="java">private void performLayout(WindowManager.LayoutParams lp, int desiredWindowWidth,
+            int desiredWindowHeight) &#123;
+    ...
+    host.layout(0, 0, host.getMeasuredWidth(), host.getMeasuredHeight());
+    ...
+  &#125;
+</code></pre><p>View 的 layout 方法代码。</p><pre><code class="java">  public void layout(int l, int t, int r, int b) &#123;
+    onLayout(changed, l, t, r, b);
+  &#125;
+
+  // 空方法，子类如果是 ViewGroup 类型，则重写这个方法，实现 ViewGroup 中所有 View 控件布局
+  protected void onLayout(boolean changed, int left, int top, int right, int bottom) &#123;
+  &#125;
+</code></pre><h3 id="view的Draw过程">view的Draw过程</h3><p>Draw 操作用来将控件绘制出来，绘制的流程从 <code>performDraw</code> 方法开始。<code>performDraw</code> 方法在类 <code>ViewRootImpl</code> 内，其核心代码如下。</p><pre><code class="java">private void performDraw() &#123;
+    boolean canUseAsync = draw(fullRedrawNeeded);
+  &#125;
+
+  private boolean draw(boolean fullRedrawNeeded) &#123;
+    ...
+    if (!drawSoftware(surface, mAttachInfo, xOffset, yOffset,
+                        scalingRequired, dirty, surfaceInsets)) &#123;
+      return false;
+    &#125;
+  &#125;
+
+  private boolean drawSoftware(Surface surface, AttachInfo attachInfo, int xoff, int yoff,
+            boolean scalingRequired, Rect dirty, Rect surfaceInsets) &#123;
+     ...
+     mView.draw(canvas);
+     ...
+  &#125;
+</code></pre><p>最终调用到每个 View 的 draw 方法绘制每个具体的 View，绘制基本上可以分为六个步骤。</p><pre><code class="java"> public void draw(Canvas canvas) &#123;
+    ...
+    // Step 1, draw the background, if needed
+    if (!dirtyOpaque) &#123;
+      drawBackground(canvas);
+    &#125;
+    ...
+    // Step 2, save the canvas' layers
+    saveCount = canvas.getSaveCount();
+    ...
+    // Step 3, draw the content 可以重写OnDraw来定义view 的绘制
+    if (!dirtyOpaque) onDraw(canvas);
+
+    // Step 4, draw the children
+    dispatchDraw(canvas);
+
+    // Step 5, draw the fade effect and restore layers
+    canvas.drawRect(left, top, right, top + length, p);
+    ...
+    canvas.restoreToCount(saveCount);
+    ...
+    // Step 6, draw decorations (foreground, scrollbars)
+    onDrawForeground(canvas);
+  &#125;
+</code></pre></div></div></div><div id="home-card"><div id="card-div"><div class="card-style"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="name">Mcokos</div><div class="description"><p>平凡人生，美好生活</p></div><div class="card-count"><div><span class="count-title">文章</span> 5</div><div><span class="count-title">标签</span> 8</div><div><span class="count-title">分类</span> 2</div></div><div id="post-doc"><div><i class="fa-solid fa-bars fa-fw"></i> <span>目录</span></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="toc-text">view的绘制流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MeasureSpec"><span class="toc-text">MeasureSpec</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">view 的Measure过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#view%E7%9A%84Layout%E8%BF%87%E7%A8%8B"><span class="toc-text">view的Layout过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#view%E7%9A%84Draw%E8%BF%87%E7%A8%8B"><span class="toc-text">view的Draw过程</span></a></li></ol></div><div class="icon-links"><span class="icon-link"><a target="_blank" rel="noopener" href="https://github.com/mcokos"><i class="fa-brands fa-github fa-fw"></i> </a></span><span class="icon-link"><a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=443915519&site=qq&menu=yes"><i class="fa-brands fa-qq fa-fw"></i> </a></span><span class="icon-link"><a href="mailto:xiaojiao_12@outlook.com"><i class="fa-solid fa-envelope fa-fw"></i></a></span></div><div class="friend-links"><div class="friend-link"><a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a></div></div></div></div></div></div><footer id="footer"><div id="footer-wrap"><div>&copy; 2022 - 2023 Mcokos Blog <span id="footer-icon"><i class="fa-solid fa-font-awesome fa-fw"></i> </span>&commat;Mcokos</div><div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div></div></footer><transition name="fade"><div id="preview" ref="preview" v-show="previewShow"><img id="preview-content" ref="previewContent"></div></transition></div><script src="/js/main.js"></script><script></script></body></html>

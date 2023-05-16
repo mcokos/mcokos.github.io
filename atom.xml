@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-08T01:34:08.062Z</updated>
+  <updated>2023-05-15T10:28:09.816Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Flutter基础入门（1）</title>
+    <link href="http://example.com/2023/05/15/flutterone/"/>
+    <id>http://example.com/2023/05/15/flutterone/</id>
+    <published>2023-05-15T10:21:38.000Z</published>
+    <updated>2023-05-15T10:28:09.816Z</updated>
+    
+    
+    <summary type="html">Flutter开发环境配置，开发工具配置选择
+</summary>
+    
+    
+    
+    <category term="Flutter" scheme="http://example.com/categories/Flutter/"/>
+    
+    
+    <category term="环境配置" scheme="http://example.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="Flutter学习" scheme="http://example.com/tags/Flutter%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>view的绘制流程</title>
+    <link href="http://example.com/2023/05/15/Viewmeasure/"/>
+    <id>http://example.com/2023/05/15/Viewmeasure/</id>
+    <published>2023-05-15T10:15:00.000Z</published>
+    <updated>2023-05-15T10:19:46.010Z</updated>
+    
+    
+    <summary type="html">Android 中 Activity 是作为应用程序的载体存在，代表着一个完整的用户界面，提供了一个窗口来绘制各种视图
+</summary>
+    
+    
+    
+    <category term="Android" scheme="http://example.com/categories/Android/"/>
+    
+    
+    <category term="view绘制" scheme="http://example.com/tags/view%E7%BB%98%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>View事件传递过程</title>
     <link href="http://example.com/2023/04/27/view-transform/"/>
     <id>http://example.com/2023/04/27/view-transform/</id>
     <published>2023-04-27T04:17:43.000Z</published>
-    <updated>2023-05-08T01:34:08.062Z</updated>
+    <updated>2023-05-15T08:21:19.791Z</updated>
     
     
     <summary type="html">实际上，当我们手指触摸屏幕的时候，事件最先是传递给当前的`Actvity`，由`Actvity` 的`dispatchTouchEvent`方法来分发事件....
@@ -67,7 +109,7 @@
     <link href="http://example.com/2023/04/27/Androidchengjing/"/>
     <id>http://example.com/2023/04/27/Androidchengjing/</id>
     <published>2023-04-27T02:54:54.000Z</published>
-    <updated>2023-04-27T03:44:00.811Z</updated>
+    <updated>2023-05-15T08:15:49.430Z</updated>
     
     
     <summary type="html">&lt;p&gt;沉浸式状态栏的实现方式有两种&lt;/p&gt;</summary>

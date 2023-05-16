@@ -9,8 +9,54 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 08 May 2023 01:34:08 GMT</pubDate>
+    <pubDate>Mon, 15 May 2023 10:28:09 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Flutter基础入门（1）</title>
+      <link>http://example.com/2023/05/15/flutterone/</link>
+      <guid>http://example.com/2023/05/15/flutterone/</guid>
+      <pubDate>Mon, 15 May 2023 10:21:38 GMT</pubDate>
+      
+      <description>Flutter开发环境配置，开发工具配置选择
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Flutter/">Flutter</category>
+      
+      
+      <category domain="http://example.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</category>
+      
+      <category domain="http://example.com/tags/Flutter%E5%AD%A6%E4%B9%A0/">Flutter学习</category>
+      
+      
+      <comments>http://example.com/2023/05/15/flutterone/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>view的绘制流程</title>
+      <link>http://example.com/2023/05/15/Viewmeasure/</link>
+      <guid>http://example.com/2023/05/15/Viewmeasure/</guid>
+      <pubDate>Mon, 15 May 2023 10:15:00 GMT</pubDate>
+      
+      <description>Android 中 Activity 是作为应用程序的载体存在，代表着一个完整的用户界面，提供了一个窗口来绘制各种视图
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Android/">Android</category>
+      
+      
+      <category domain="http://example.com/tags/view%E7%BB%98%E5%88%B6/">view绘制</category>
+      
+      
+      <comments>http://example.com/2023/05/15/Viewmeasure/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>View事件传递过程</title>
