@@ -9,8 +9,74 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 15 May 2023 10:28:09 GMT</pubDate>
+    <pubDate>Wed, 17 May 2023 03:45:49 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Flutter 组件学习之Column</title>
+      <link>http://example.com/2023/05/17/flutter-widget-column/</link>
+      <guid>http://example.com/2023/05/17/flutter-widget-column/</guid>
+      <pubDate>Wed, 17 May 2023 02:15:31 GMT</pubDate>
+      
+      <description>`Column` 是一个用于纵向排布显示它的子组件的widget, 如果想子组件伸展填充纵向可用空间，可以使用Expanded组件包裹它。
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Flutter/">Flutter</category>
+      
+      
+      <category domain="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/">witget学习</category>
+      
+      
+      <comments>http://example.com/2023/05/17/flutter-widget-column/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Flutter 组件学习之AppBar</title>
+      <link>http://example.com/2023/05/16/flutter-widget-appbar/</link>
+      <guid>http://example.com/2023/05/16/flutter-widget-appbar/</guid>
+      <pubDate>Tue, 16 May 2023 08:31:59 GMT</pubDate>
+      
+      <description>`AppBar`是个Material Design witget, `AppBar`有一个toolbar和其他隐藏组件构成，如`TabBar` 和 `FlexibleSpaceBar`. 
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Flutter/">Flutter</category>
+      
+      
+      <category domain="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/">witget学习</category>
+      
+      
+      <comments>http://example.com/2023/05/16/flutter-widget-appbar/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Vue学习总结</title>
+      <link>http://example.com/2023/05/16/vuestudy/</link>
+      <guid>http://example.com/2023/05/16/vuestudy/</guid>
+      <pubDate>Tue, 16 May 2023 01:36:31 GMT</pubDate>
+      
+      <description>Vue是一款用于构建用户界面的 JavaScript 框架，提供了一套声明式的、组件化的编程模型。
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Vue/">Vue</category>
+      
+      
+      <category domain="http://example.com/tags/Vue%E5%85%A5%E9%97%A8/">Vue入门</category>
+      
+      
+      <comments>http://example.com/2023/05/16/vuestudy/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Flutter基础入门（1）</title>

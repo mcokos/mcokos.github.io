@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>Vue学习总结 | Mcokos Blog</title><meta name="author" content="Mcokos"><meta name="description" content=""><meta name="keywords" content=""><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel="icon" href="/images/favicon.jpg"><script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css"><link rel="stylesheet" href="/css/fonts.min.css"><script>const mixins={}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script><script src="https://cdn.staticfile.org/highlight.js/11.7.0/languages/xml.min.js"></script><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"><script src="/js/lib/highlight.js"></script><script src="/js/lib/preview.js"></script><link rel="stylesheet" href="/css/main.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mcokos Blog" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="Mcokos Blog" type="application/rss+xml"></head><body><div id="layout"><transition name="slide"><div id="slide" v-show="showSlidBar"><div><div id="sild-mask" @click="taggleSildbar"></div><div id="sildbar-menu"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="items" v-show="true"><a href="/"><div class="item"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span></div></a><a href="/archives"><div class="item"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span></div></a><a href="/categories"><div class="item"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span></div></a><a href="/tags"><div class="item"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span></div></a><a href="/about"><div class="item"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></div></a></div></div></div></div></transition><div id="float-button"><a @click.prevent="toTop"><i class="fa-sharp fa-solid fa-arrow-up fa-xl"></i></a></div><header id="menu"><nav class="desktop-menu"><a class="title" href="/"><span>MCOKOS BLOG</span></a><div class="menu-items"><a href="/" id="menu-home"><i class="fa-solid fa-house fa-fw"></i> <span>首页</span> </a><a href="/archives" id="menu-archives"><i class="fa-solid fa-box-archive fa-fw"></i> <span>归档</span> </a><a href="/categories" id="menu-categories"><i class="fa-solid fa-bookmark fa-fw"></i> <span>分类</span> </a><a href="/tags" id="menu-tags"><i class="fa-solid fa-tags fa-fw"></i> <span>标签</span> </a><a href="/about" id="menu-about"><i class="fa-solid fa-id-card fa-fw"></i> <span>关于</span></a></div><div class="menu-right"><div class="menu-button" id="search-button"><a><i class="fa-solid fa-magnifying-glass fa-fw fa-xl"></i></a></div><div class="menu-button" id="menu-totop"></div><div class="menu-button" id="mobile-menu" @click="taggleSildbar"><a><i class="fa-solid fa-bars fa-fw fa-xl"></i></a></div></div></nav></header><div id="page" ref="homePostsWrap"><div id="home-left"><div class="article"><div><h1>Vue学习总结</h1></div><div class="info"><span class="date"><span class="icon"><i class="fa-solid fa-calendar fa-fw"></i> </span>2023/5/16 </span><span class="category"><a href="/categories/Vue/"><span class="icon"><i class="fa-solid fa-bookmark fa-fw"></i> </span>Vue </a></span><span class="tags"><span class="icon"><i class="fa-solid fa-tags fa-fw"></i> </span><span class="tag"><a href="/tags/Vue%E5%85%A5%E9%97%A8/" style="color:#5c6b72">Vue入门</a></span></span></div><div class="content" v-pre><h3 id="简介">简介</h3><p>Vue是一款用于构建用户界面的 JavaScript 框架，提供了一套声明式的、组件化的编程模型。</p><h6 id="单文件组件">单文件组件</h6><p>顾名思义，Vue 的单文件组件会将一个组件的逻辑 (JavaScript)，模板 (HTML) 和样式 (CSS) 封装在同一个文件里。</p><pre><code class="typescript">&lt;script&gt;
+export default &#123;
+  data() &#123;
+    return &#123;
+      count: 0
+    &#125;
+  &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;count++&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+button &#123;
+  font-weight: bold;
+&#125;
+&lt;/style&gt;
+</code></pre><h6 id="Vue提供了两种API-风格：选项式-API-和组合式-API。">Vue提供了两种API 风格：<strong>选项式 API</strong> 和<strong>组合式 API</strong>。</h6><ul><li>选项式API</li></ul><pre><code class="typescript">&lt;script&gt;
+export default &#123;
+  // data() 返回的属性将会成为响应式的状态
+  // 并且暴露在 `this` 上
+  data() &#123;
+    return &#123;
+      count: 0
+    &#125;
+  &#125;,
+
+  // methods 是一些用来更改状态与触发更新的函数
+  // 它们可以在模板中作为事件监听器绑定
+  methods: &#123;
+    increment() &#123;
+      this.count++
+    &#125;
+  &#125;,
+
+  // 生命周期钩子会在组件生命周期的各个不同阶段被调用
+  // 例如这个函数就会在组件挂载完成后被调用
+  mounted() &#123;
+    console.log(`The initial count is $&#123;this.count&#125;.`)
+  &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;increment&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;
+&lt;/template&gt;
+</code></pre><ul><li>组合式API</li></ul><pre><code class="typescript">&lt;script setup&gt;
+import &#123; ref, onMounted &#125; from 'vue'
+
+// 响应式状态
+const count = ref(0)
+
+// 用来修改状态、触发更新的函数
+function increment() &#123;
+  count.value++
+&#125;
+
+// 生命周期钩子
+onMounted(() =&gt; &#123;
+  console.log(`The initial count is $&#123;count.value&#125;.`)
+&#125;)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;increment&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;
+&lt;/template&gt;
+</code></pre><p>学习过程中主要选用 单页面组件 组合式API进行相关学</p><p>创建第一个应用</p><p>确保你安装了最新版本的Node.js ,通过运行<code>npm init vue@latest</code>命令，就可以创建项目，命令执行后会有一些功能选项如下。</p><p><img src="C:%5CUsers%5Cxiaojiao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1676360180372.png" alt="1676360180372"></p><p>通过运行以下命令安装依赖并启动开发服务器</p><pre><code>&gt; cd &lt;your-project-name&gt;
+&gt; npm install
+&gt; npm run dev
+</code></pre><p>运行后打开提示的链接 最终展示如下图</p><p><img src="C:%5CUsers%5Cxiaojiao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1676360754980.png" alt="1676360754980"></p><p>关于IDE的使用 官方推荐使用的 IDE 是 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a>，配合 <a target="_blank" rel="noopener" href="https://github.com/johnsoncodehk/volar">Volar</a> 插件。Volar 提供了语法高亮、TypeScript 支持，以及模板内表达式与组件 props 的智能提示。</p><h3 id="模板语法">模板语法</h3><ul><li>文本插值</li></ul><p>最基本的数据绑定形式是文本插值</p><pre><code class="html">&lt;span&gt;Message: &#123;&#123; msg &#125;&#125;&lt;/span&gt;
+</code></pre><p>双大括号标签会被替换为相应组件实例中 <code>msg</code> 属性的值。同时每次 <code>msg</code> 属性更改时它也会同步更新。</p><ul><li>原始 HTML</li></ul><p>如果想插入一段HTML 代码可以通过<code>v-html</code>命令进行插入</p><pre><code class="html">&lt;p&gt;Using v-html directive: &lt;span v-html=&quot;rawHtml&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</code></pre><ul><li>Attribute 绑定</li></ul><p>双大括号不能在 HTML attributes 中使用。想要响应式地绑定一个 attribute，应该使用 <code>v-bind</code> 指令</p><pre><code class="html">&lt;div v-bind:id=&quot;dynamicId&quot;&gt;&lt;/div&gt;
+</code></pre><p>可以简写成</p><pre><code class="html">&lt;div :id=&quot;dynamicId&quot;&gt;&lt;/div&gt;
+</code></pre><p>这样attributes 就可以 一个组件属性关联起来，这个attributes 值就是组件属性的值，结合后面的响应式状态，改变组件属性后，HTML 渲染会刷新</p><h3 id="响应式基础">响应式基础</h3><p>能在改变时触发更新的状态被称作是<strong>响应式</strong>的。我们可以使用 Vue 的 <code>reactive()</code> API 来声明响应式状态。由 <code>reactive()</code> 创建的对象都是 JavaScript Proxy，其行为与普通对象一样：</p><pre><code class="typescript">import &#123; reactive &#125; from 'vue'
+
+const counter = reactive(&#123;
+  count: 0
+&#125;)
+
+console.log(counter.count) // 0
+counter.count++
+
+</code></pre><p><code>reactive()</code> 只适用于对象 (包括数组和内置类型，如 <code>Map</code> 和 <code>Set</code>)。而另一个 API <code>ref()</code> 则可以接受任何值类型。<code>ref</code> 会返回一个包裹对象，并在 <code>.value</code> 属性下暴露内部值。</p><pre><code class="typescript">import &#123; ref &#125; from 'vue'
+
+const message = ref('Hello World!')
+
+console.log(message.value) // &quot;Hello World!&quot;
+message.value = 'Changed'
+
+</code></pre><h6 id="DOM-更新时机">DOM 更新时机</h6><p>当你更改响应式状态后，DOM 会自动更新。然而，你得注意 DOM 的更新并不是同步的。相反，Vue 将缓冲它们直到更新周期的 “下个时机” 以确保无论你进行了多少次状态更改，每个组件都只更新一次。</p><p>若要等待一个状态改变后的 DOM 更新完成，你可以使用 <code>nextTick()</code>这个全局 API：</p><pre><code class="typescript">import &#123; nextTick &#125; from 'vue'
+
+function increment() &#123;
+  state.count++
+  nextTick(() =&gt; &#123;
+    // 访问更新后的 DOM
+  &#125;)
+&#125;
+
+
+</code></pre><h3 id="条件渲染">条件渲染</h3><p>我们可以使用 <code>v-if</code> 指令来有条件地渲染元素：</p><pre><code class="html">&lt;h1 v-if=&quot;awesome&quot;&gt;Vue is awesome!&lt;/h1&gt;
+
+</code></pre><p>这个 <code>&lt;h1&gt;</code> 标签只会在 <code>awesome</code> 的值为<code>true</code> 时渲染,若 <code>awesome</code> 更改为<code>false</code>，它将被从 DOM 中移除。</p><p>我们也可以使用 <code>v-else</code> 和 <code>v-else-if</code> 来表示其他的条件分支：</p><pre><code class="html">&lt;h1 v-if=&quot;awesome&quot;&gt;Vue is awesome!&lt;/h1&gt;
+&lt;h1 v-else&gt;Oh no 😢&lt;/h1&gt;
+
+</code></pre><h3 id="列表渲染">列表渲染</h3><p>我们可以使用 <code>v-for</code> 指令来渲染一个基于源数组的列表：</p><pre><code class="html">&lt;ul&gt;
+  &lt;li v-for=&quot;todo in todos&quot; :key=&quot;todo.id&quot;&gt;
+    &#123;&#123; todo.text &#125;&#125;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</code></pre><p>注意，我们还给每个 todo 对象设置了唯一的 <code>id</code>，并且将它作为[特殊的 <code>key</code> attribute 绑定到每个 <code>&lt;li&gt;</code>。<code>key</code> 使得 Vue 能够精确的移动每个 <code>&lt;li&gt;</code>，以匹配对应的对象在数组中的位置。</p><h3 id="计算属性">计算属性</h3><p><code>computed()</code>它可以让我们创建一个计算属性 ref，这个 ref 会动态地根据其他响应式数据源来计算其 <code>.value</code>：</p><pre><code class="typescript">&lt;script setup&gt;
+import &#123; reactive, computed &#125; from 'vue'
+
+const author = reactive(&#123;
+  name: 'John Doe',
+  books: [
+    'Vue 2 - Advanced Guide',
+    'Vue 3 - Basic Guide',
+    'Vue 4 - The Mystery'
+  ]
+&#125;)
+
+// 一个计算属性 ref
+const publishedBooksMessage = computed(() =&gt; &#123;
+  return author.books.length &gt; 0 ? 'Yes' : 'No'
+&#125;)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;p&gt;Has published books:&lt;/p&gt;
+  &lt;span&gt;&#123;&#123; publishedBooksMessage &#125;&#125;&lt;/span&gt;
+&lt;/template&gt;
+
+
+</code></pre><p>计算属性会自动跟踪其计算中所使用的到的其他响应式状态，并将它们收集为自己的依赖。计算结果会被缓存，并只有在其依赖发生改变时才会被自动更新。</p><h3 id="生命周期钩子">生命周期钩子</h3><h6 id="onMounted">onMounted()</h6><p>注册一个回调函数，在组件挂载完成后执行。</p><h6 id="onUpdated">onUpdated()</h6><p>注册一个回调函数，在组件因为响应式状态变更而更新其 DOM 树之后调用。</p><h6 id="onUnmounted">onUnmounted()</h6><p>注册一个回调函数，在组件实例被卸载之后调用</p><h6 id="onBeforeMount">onBeforeMount()</h6><p>注册一个钩子，在组件被挂载之前被调用。</p><h6 id="onBeforeUpdate">onBeforeUpdate()</h6><p>注册一个钩子，在组件即将因为响应式状态变更而更新其 DOM 树之前调用。</p><h6 id="onBeforeUpdate-2">onBeforeUpdate()</h6><p>注册一个钩子，在组件即将因为响应式状态变更而更新其 DOM 树之前调用。</p><h3 id="事件监听">事件监听</h3><p>我们可以使用 <code>v-on</code> 指令监听 DOM 事件：</p><pre><code class="html">&lt;button v-on:click=&quot;increment&quot;&gt;&#123;&#123; count &#125;&#125;&lt;/button&gt;
+
+</code></pre><p>也可以简化为</p><pre><code class="html">&lt;button @click=&quot;increment&quot;&gt;&#123;&#123; count &#125;&#125;&lt;/button&gt;
+
+</code></pre><p>increment可以是个方法名 也可以JavaScript 语句</p><p>事件修饰符</p><ul><li><p><code>.stop</code></p><p>防止事件冒泡，通俗来说就是阻止事件向父元素传递，阻止任何父事件处理程序被执行，等同于JavaScript中的event.stopPropagation()。</p></li><li><p><code>.prevent</code></p><p>某些标签拥有自身的默认事件，比如<a>标签点击后会进行页面的跳转。这类默认事件虽然是冒泡后开始的，但不会因为stop而停止执行。阻止执行这类预设的行为，.prevent就派上用场了。相当于调用了event.preventDefault方法</a></p></li><li><p><code>.self</code></p><p>只有在event.target是当前元素自身时触发</p><pre><code class="html">&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+
+</code></pre><p>使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用<br>v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击</p></li><li><p><code>.capture</code></p><p>让事件触发从包含这个元素的顶层开发往下依次触发</p><pre><code class="html">&lt;div @click.capture=&quot;shout(1)&quot;&gt;
+    obj1
+&lt;div @click.capture=&quot;shout(2)&quot;&gt;
+    obj2
+&lt;div @click=&quot;shout(3)&quot;&gt;
+    obj3
+&lt;div @click=&quot;shout(4)&quot;&gt;
+    obj4
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+// 输出结构: 1 2 4 3
+
+
+</code></pre></li><li><p><code>.once</code></p><p>绑定的事件只能触发一次</p><pre><code class="html">&lt;button @click.once=&quot;shout(1)&quot;&gt;ok&lt;/button&gt;
+
+</code></pre></li><li><p><code>.passive</code></p><p>这个我们以移动端监听元素滚动事件说明，在监听元素滚动事件的时候，会一直触发onscroll事件让页面变的越来越卡，因此在我们使用这个修饰符后，相当于给onscroll事件增加了.lazy修饰符</p><pre><code class="html">&lt;!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 --&gt;
+&lt;!-- 而不会等待 `onScroll` 完成 --&gt;
+&lt;!-- 这其中包含 `event.preventDefault()` 的情况 --&gt;
+&lt;div v-on:scroll.passive=&quot;onScroll&quot;&gt;...&lt;/div&gt;
+
+
+</code></pre></li></ul><h3 id="表单绑定">表单绑定</h3><p>我们可以同时使用 <code>v-bind</code> 和 <code>v-on</code> 来在表单的输入元素上创建双向绑定：</p><pre><code class="html">&lt;input :value=&quot;text&quot; @input=&quot;onInput&quot;&gt;
+
+</code></pre><pre><code class="typescript">function onInput(e) &#123;
+  // v-on 处理函数会接收原生 DOM 事件
+  // 作为其参数。
+  text.value = e.target.value
+&#125;
+
+
+</code></pre><p>为了简化双向绑定，Vue 提供了一个 <code>v-model</code> 指令，它实际上是上述操作的语法糖：</p><pre><code class="html">&lt;input v-model=&quot;text&quot;&gt;
+
+</code></pre><p><code>v-model</code> 会将被绑定的值与 <code>&lt;input&gt;</code> 的值自动同步，这样我们就不必再使用事件处理函数了。<code>v-model</code> 会将被绑定的值与 <code>&lt;input&gt;</code> 的值自动同步，这样我们就不必再使用事件处理函数了。</p><h3 id="侦听器">侦听器</h3><p>我们可以使用 <code>watch()</code> 在每次响应式状态发生变化时触发回调函数：</p><pre><code class="typescript">import &#123; ref, watch &#125; from 'vue'
+
+const count = ref(0)
+
+watch(count, (newCount) =&gt; &#123;
+  // 没错，console.log() 是一个副作用
+  console.log(`new count is: $&#123;newCount&#125;`)
+&#125;)
+
+
+</code></pre><p><code>watch</code> 的第一个参数可以是不同形式的“数据源”：它可以是一个 ref (包括计算属性)、一个响应式对象、一个 getter 函数、或多个数据源组成的数组</p><h6 id="即时回调的侦听器">即时回调的侦听器</h6><p><code>watch</code> 默认是懒执行的：仅当数据源变化时，才会执行回调。我们可以通过传入 <code>immediate: true</code> 选项来强制侦听器的回调立即执行：</p><pre><code class="typescript">watch(source, (newValue, oldValue) =&gt; &#123;
+  // 立即执行，且当 `source` 改变时再次执行
+&#125;, &#123; immediate: true &#125;)
+
+
+</code></pre><h6 id="watchEffect">watchEffect()</h6><p><code>watchEffect()</code> 允许我们自动跟踪回调的响应式依赖。</p><h6 id="watch-vs-watchEffect">watch vs. watchEffect</h6><p><code>watch</code> 和 <code>watchEffect</code> 都能响应式地执行有副作用的回调。它们之间的主要区别是追踪响应式依赖的方式：</p><ul><li><code>watch</code> 只追踪明确侦听的数据源。它不会追踪任何在回调中访问到的东西。另外，仅在数据源确实改变时才会触发回调。<code>watch</code> 会避免在发生副作用时追踪依赖，因此，我们能更加精确地控制回调函数的触发时机。</li><li><code>watchEffect</code>，则会在副作用发生期间追踪依赖。它会在同步执行过程中，自动追踪所有能访问到的响应式属性。这更方便，而且代码往往更简洁，但有时其响应性依赖关系会不那么明确。</li></ul><h6 id="回调的触发">回调的触发</h6><p>当你更改了响应式状态，默认情况下，用户创建的侦听器回调，都会在 Vue 组件更新<strong>之前</strong>被调用。如果想在侦听器回调中能访问被 Vue 更新<strong>之后</strong>的 DOM，你需要指明 <code>flush: 'post'</code> 选项：</p><pre><code class="typescript">watch(source, callback, &#123;
+  flush: 'post'
+&#125;)
+
+watchEffect(callback, &#123;
+  flush: 'post'
+&#125;)
+
+
+</code></pre><h3 id="组件基础">组件基础</h3><h6 id="定义一个组件">定义一个组件</h6><p>当使用构建步骤时，我们一般会将 Vue 组件定义在一个单独的 <code>.vue</code> 文件中，这被叫做单文件组件 (简称 SFC)：</p><pre><code class="typescript">&lt;script setup&gt;
+import &#123; ref &#125; from 'vue'
+
+const count = ref(0)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click=&quot;count++&quot;&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;/button&gt;
+&lt;/template&gt;
+
+
+</code></pre><h6 id="使用组件">使用组件</h6><p>要使用一个子组件，我们需要在父组件中导入它。假设我们把计数器组件放在了一个叫做 ButtonCounter.vue 的文件中，这个组件将会以默认导出的形式被暴露给外部。</p><pre><code class="html">&lt;script setup&gt;
+import ButtonCounter from './ButtonCounter.vue'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;Here is a child component!&lt;/h1&gt;
+  &lt;ButtonCounter /&gt;
+&lt;/template&gt;
+
+
+</code></pre><p>通过 <code>&lt;script setup&gt;</code>，导入的组件都在模板中直接可用。</p><h6 id="传递-props">传递 props</h6><p>Props 是一种特别的 attributes，你可以在组件上声明注册。要传递给博客文章组件一个标题，我们必须在组件的 props 列表上声明它。这里要用到 defineProps 宏：</p><pre><code class="html">&lt;!-- BlogPost.vue --&gt;
+&lt;script setup&gt;
+defineProps(['title'])
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h4&gt;&#123;&#123; title &#125;&#125;&lt;/h4&gt;
+&lt;/template&gt;
+
+
+</code></pre><p><code>defineProps</code> 是一个仅 <code>&lt;script setup&gt;</code> 中可用的编译宏命令，并不需要显式地导入。声明的 props 会自动暴露给模板。<code>defineProps</code> 会返回一个对象，其中包含了可以传递给组件的所有 props</p><h6 id="监听事件">监听事件</h6><p>除了接收 props，子组件还可以向父组件触发事件：</p><pre><code class="html">&lt;script setup&gt;
+// 声明触发的事件
+const emit = defineEmits(['response'])
+
+// 带参数触发
+emit('response', 'hello from child')
+&lt;/script&gt;
+
+</code></pre><p><code>emit()</code> 的第一个参数是事件的名称。其他所有参数都将传递给事件监听器。</p><p>父组件可以使用 <code>v-on</code> 监听子组件触发的事件——这里的处理函数接收了子组件触发事件时的额外参数并将它赋值给了本地状态：</p><pre><code class="html">&lt;ChildComp @response=&quot;(msg) =&gt; childMsg = msg&quot; /&gt;
+
+</code></pre></div></div></div><div id="home-card"><div id="card-div"><div class="card-style"><div class="avatar"><img src="/images/avatar.jpg" alt="avatar"></div><div class="name">Mcokos</div><div class="description"><p>平凡人生，美好生活</p></div><div class="card-count"><div><span class="count-title">文章</span> 8</div><div><span class="count-title">标签</span> 10</div><div><span class="count-title">分类</span> 3</div></div><div id="post-doc"><div><i class="fa-solid fa-bars fa-fw"></i> <span>目录</span></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-text">模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="toc-text">响应式基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-text">条件渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="toc-text">列表渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-text">计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90"><span class="toc-text">生命周期钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC"><span class="toc-text">事件监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E7%BB%91%E5%AE%9A"><span class="toc-text">表单绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%A6%E5%90%AC%E5%99%A8"><span class="toc-text">侦听器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="toc-text">组件基础</span></a></li></ol></div><div class="icon-links"><span class="icon-link"><a target="_blank" rel="noopener" href="https://github.com/mcokos"><i class="fa-brands fa-github fa-fw"></i> </a></span><span class="icon-link"><a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=443915519&site=qq&menu=yes"><i class="fa-brands fa-qq fa-fw"></i> </a></span><span class="icon-link"><a href="mailto:xiaojiao_12@outlook.com"><i class="fa-solid fa-envelope fa-fw"></i></a></span></div><div class="friend-links"><div class="friend-link"><a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a></div></div></div></div></div></div><footer id="footer"><div id="footer-wrap"><div>&copy; 2022 - 2023 Mcokos Blog <span id="footer-icon"><i class="fa-solid fa-font-awesome fa-fw"></i> </span>&commat;Mcokos</div><div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div></div></footer><transition name="fade"><div id="preview" ref="preview" v-show="previewShow"><img id="preview-content" ref="previewContent"></div></transition></div><script src="/js/main.js"></script><script></script></body></html>

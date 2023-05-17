@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-15T10:28:09.816Z</updated>
+  <updated>2023-05-17T03:45:49.228Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Flutter 组件学习之Column</title>
+    <link href="http://example.com/2023/05/17/flutter-widget-column/"/>
+    <id>http://example.com/2023/05/17/flutter-widget-column/</id>
+    <published>2023-05-17T02:15:31.000Z</published>
+    <updated>2023-05-17T03:45:49.228Z</updated>
+    
+    
+    <summary type="html">`Column` 是一个用于纵向排布显示它的子组件的widget, 如果想子组件伸展填充纵向可用空间，可以使用Expanded组件包裹它。
+</summary>
+    
+    
+    
+    <category term="Flutter" scheme="http://example.com/categories/Flutter/"/>
+    
+    
+    <category term="witget学习" scheme="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter 组件学习之AppBar</title>
+    <link href="http://example.com/2023/05/16/flutter-widget-appbar/"/>
+    <id>http://example.com/2023/05/16/flutter-widget-appbar/</id>
+    <published>2023-05-16T08:31:59.000Z</published>
+    <updated>2023-05-16T08:40:10.055Z</updated>
+    
+    
+    <summary type="html">`AppBar`是个Material Design witget, `AppBar`有一个toolbar和其他隐藏组件构成，如`TabBar` 和 `FlexibleSpaceBar`. 
+</summary>
+    
+    
+    
+    <category term="Flutter" scheme="http://example.com/categories/Flutter/"/>
+    
+    
+    <category term="witget学习" scheme="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue学习总结</title>
+    <link href="http://example.com/2023/05/16/vuestudy/"/>
+    <id>http://example.com/2023/05/16/vuestudy/</id>
+    <published>2023-05-16T01:36:31.000Z</published>
+    <updated>2023-05-16T08:48:39.499Z</updated>
+    
+    
+    <summary type="html">Vue是一款用于构建用户界面的 JavaScript 框架，提供了一套声明式的、组件化的编程模型。
+</summary>
+    
+    
+    
+    <category term="Vue" scheme="http://example.com/categories/Vue/"/>
+    
+    
+    <category term="Vue入门" scheme="http://example.com/tags/Vue%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Flutter基础入门（1）</title>
     <link href="http://example.com/2023/05/15/flutterone/"/>
     <id>http://example.com/2023/05/15/flutterone/</id>
     <published>2023-05-15T10:21:38.000Z</published>
-    <updated>2023-05-15T10:28:09.816Z</updated>
+    <updated>2023-05-16T01:33:42.645Z</updated>
     
     
     <summary type="html">Flutter开发环境配置，开发工具配置选择
