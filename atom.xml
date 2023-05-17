@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-17T03:45:49.228Z</updated>
+  <updated>2023-05-17T03:55:47.416Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/05/17/flutter-widget-column/"/>
     <id>http://example.com/2023/05/17/flutter-widget-column/</id>
     <published>2023-05-17T02:15:31.000Z</published>
-    <updated>2023-05-17T03:45:49.228Z</updated>
+    <updated>2023-05-17T03:55:47.416Z</updated>
     
     
     <summary type="html">`Column` 是一个用于纵向排布显示它的子组件的widget, 如果想子组件伸展填充纵向可用空间，可以使用Expanded组件包裹它。
