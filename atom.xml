@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-17T03:55:47.416Z</updated>
+  <updated>2023-06-01T07:49:06.294Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flutter组件学习之Text</title>
+    <link href="http://example.com/2023/06/01/flutter-widget-text/"/>
+    <id>http://example.com/2023/06/01/flutter-widget-text/</id>
+    <published>2023-06-01T06:11:19.000Z</published>
+    <updated>2023-06-01T07:49:06.294Z</updated>
+    
+    
+    <summary type="html">`AppBar`是个Material Design witget, `AppBar`有一个toolbar和其他隐藏组件构成，如`TabBar` 和 `FlexibleSpaceBar`. 
+</summary>
+    
+    
+    
+    <category term="Flutter" scheme="http://example.com/categories/Flutter/"/>
+    
+    
+    <category term="witget学习" scheme="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Flutter 组件学习之Column</title>

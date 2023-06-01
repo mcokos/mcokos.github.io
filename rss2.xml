@@ -9,8 +9,30 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 17 May 2023 03:55:47 GMT</pubDate>
+    <pubDate>Thu, 01 Jun 2023 07:49:06 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Flutter组件学习之Text</title>
+      <link>http://example.com/2023/06/01/flutter-widget-text/</link>
+      <guid>http://example.com/2023/06/01/flutter-widget-text/</guid>
+      <pubDate>Thu, 01 Jun 2023 06:11:19 GMT</pubDate>
+      
+      <description>`AppBar`是个Material Design witget, `AppBar`有一个toolbar和其他隐藏组件构成，如`TabBar` 和 `FlexibleSpaceBar`. 
+</description>
+      
+      
+      
+      
+      <category domain="http://example.com/categories/Flutter/">Flutter</category>
+      
+      
+      <category domain="http://example.com/tags/witget%E5%AD%A6%E4%B9%A0/">witget学习</category>
+      
+      
+      <comments>http://example.com/2023/06/01/flutter-widget-text/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Flutter 组件学习之Column</title>
